@@ -39,12 +39,11 @@ export class Renderer {
         sections: Map<string, Section>,
         textEditors: readonly TextEditor[],
     ) {
+        // Single-pass iteration for better performance
         textEditors.forEach((textEditor) => {
             // Remove all decorations first to prevent graphical issues
             this.removeDecorationsForEditor(textEditor);
-        });
 
-        textEditors.forEach((textEditor) => {
             // Reset lines for new editor
             const coverageSets: CoverageSets = {
                 full: new Set<number>(),
